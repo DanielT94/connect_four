@@ -1,11 +1,11 @@
 require_relative 'pieces'
 
-#Creates the board
+# Creates the board
 class Board
   include Pieces
 
   attr_accessor :grid
-  
+
   def initialize
     @grid = Array.new(6) { Array.new(7) { empty_circle } }
   end

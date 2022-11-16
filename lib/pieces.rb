@@ -1,3 +1,4 @@
+#defines game pieces
 module Pieces
   def red_circle
     "\e[31m\u25cf\e[0m"

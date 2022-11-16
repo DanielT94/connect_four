@@ -1,6 +1,7 @@
 require_relative 'player'
 require_relative 'board'
 
+# Accepts input and plays game
 class Game
   include Pieces
 
@@ -48,11 +49,11 @@ class Game
   def player_input(player)
     loop do
       puts "#{player.symbol} #{player.name}'s turn."
-      puts "Select your column: "
+      puts 'Select your column: '
       column = gets.chomp.to_i - 1
       return column if verify_input(column)
 
-      puts "Invalid input. Try again."
+      puts 'Invalid input. Try again.'
     end
   end
 

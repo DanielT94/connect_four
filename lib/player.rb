@@ -1,4 +1,4 @@
-#Class to initialize player
+# Class to initialize player
 class Player
   attr_accessor :name, :symbol
 
