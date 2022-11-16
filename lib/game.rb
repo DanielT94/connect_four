@@ -6,12 +6,23 @@ class Game
 
   def initialize
     @board = Board.new
-    @player1 = Player.new(red_circle)
-    @player2 = Player.new(blue_circle)
+    @player1 = Player.new(@name, red_circle)
+    @player2 = Player.new(@name, blue_circle)
     @turn = 0
   end
 
-  #play
+  def play
+    introduction
+    set_name
+    loop do
+      current_player = player_turn
+      @board.display
+      column = player_input(current_player)
+      @board.update_board(@board.available_row(column), column, current_player.symbol)
+      break if game_over?(current_player) || draw?
+    end
+    @board.display
+  end
 
   def introduction
     puts <<~HEREDOC
@@ -30,8 +41,8 @@ class Game
   end
 
   def set_name
-    player1.name = ask_name
-    player2.name = ask_name
+    @player1.name = ask_name(1)
+    @player2.name = ask_name(2)
   end
 
   def player_input(player)
@@ -54,10 +65,22 @@ class Game
     @turn.odd? ? @player1 : @player2
   end
 
+  def game_over?(player)
+    6.times do |row|
+      7.times do |column|
+        if @board.check_four(row, column, player.symbol)
+          puts "#{player.name} won! Well done!"
+          return true
+        end
+      end
+    end
+    false
+  end
 
-  def game_over?
-
-  #draw?
-
-
+  def draw?
+    if @turn == 42
+      puts "It's a Draw!"
+      true
+    end
+  end
 end
