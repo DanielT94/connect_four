@@ -1,4 +1,4 @@
-require_relative './lib.game'
+require_relative './lib/game'
 
 def main
   loop do
