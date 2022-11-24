@@ -62,7 +62,7 @@ class Board
   def check_up_diagonal(row, column, symbol)
     return if column < 3
 
-    @grid[row][column] == symbol && @grid[row + 1][column - 1] == symbol && @grid[row + 2][column + 2] == symbol && @grid[row + 3][column + 3] == symbol
+    @grid[row][column] == symbol && @grid[row + 1][column - 1] == symbol && @grid[row + 2][column - 2] == symbol && @grid[row + 3][column - 3] == symbol
   end
 
   def check_four(row, column, symbol)
